@@ -32,16 +32,7 @@ public class HarmoonilineKeskmine_3{
 	  }
 	}
 
-/*	public static void checkValues(String filePath) throws IOException {
-	//	askFile(filePath);
-		BufferedReader answerFile = askFile(filePath);
-		String answerLine = answerFile.readLine();
-		float answer = Float.parseFloat(answerLine);
-		if (answer != outputArray) {
-			saveToFile(askFile(), answer);
-		}
-		
-	}*/
+
 
 	public static float[] arrayFromFile(String filePath) throws IOException {
 		BufferedReader array = askFile(filePath);
@@ -52,6 +43,17 @@ public class HarmoonilineKeskmine_3{
 			outputArray[i] = Float.parseFloat(helper[i]);
 		}
 		return outputArray;
+	}
+
+	public static void checkValues(String filePath) throws IOException {
+	//	Kontrolli, kas vastus on juba olemas. hetkel ei tööta..
+		BufferedReader answerFile = askFile(filePath);
+		String answerLine = answerFile.readLine();
+		float answer = Float.parseFloat(answerLine);
+		if (answer != calculatingAverage(arrayFromFile("data.txt"))) {
+			saveToFile("vastus.txt", calculatingAverage(arrayFromFile("data.txt")));
+		}
+		
 	}
 
 	public static void saveToFile(String filepath, float answer) throws IOException {
